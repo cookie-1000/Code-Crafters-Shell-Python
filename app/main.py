@@ -10,6 +10,11 @@ def main():
             sys.exit()
         if command[:4]=="echo":
             print (command[5:])
+        if command[:4]=="type":
+            if command[5:] in ["echo","exit","type"]:
+                print (command[5:]+ " is a shell builtin")
+            else:
+                print (f"{command[5:]}: not found")
         else: 
             print(f"{command}: command not found")
         
