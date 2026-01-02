@@ -8,6 +8,8 @@ def main():
         command = input().strip()
         if command == "exit":
             sys.exit()
+        if command[:4]=="echo":
+            print (command[5:])
         else: 
             print(f"{command}: command not found")
         
