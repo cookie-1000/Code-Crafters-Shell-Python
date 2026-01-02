@@ -8,15 +8,17 @@ def main():
         command = input().strip()
         if command == "exit":
             sys.exit()
-        if command[:4]=="echo":
+        elif command[:4]=="echo":
             print (command[5:])
-        if command[:4]=="type":
+        elif command[:4]=="type":
             if command[5:] in ["echo","exit","type"]:
                 print (command[5:]+ " is a shell builtin")
             else:
                 print (f"{command[5:]}: not found")
+                continue
         else: 
             print(f"{command}: command not found")
+    
         
 if __name__ == "__main__":
     main()
