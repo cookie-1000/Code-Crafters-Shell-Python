@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-built_ins = {"echo", "exit", "type"}
+built_ins = {"echo", "exit", "type", "pwd"}
 
 def find_executable(cmd: str):
     dirs = os.getenv("PATH", "").split(os.pathsep)
@@ -27,7 +27,8 @@ def main():
 
         if cmd == "exit":
             return
-        if cmd == "pwd":
+
+        elif cmd == "pwd":
             print(os.getcwd())
 
         elif cmd == "echo":
