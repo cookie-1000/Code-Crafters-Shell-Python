@@ -27,6 +27,8 @@ def main():
 
         if cmd == "exit":
             return
+        if cmd == "pwd":
+            print(os.getcwd())
 
         elif cmd == "echo":
             if line.startswith("echo "):
