@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-built_ins = {"echo", "exit", "type", "pwd"}
+built_ins = {"echo", "exit", "type", "pwd", "cd"}
 
 def find_executable(cmd: str):
     dirs = os.getenv("PATH", "").split(os.pathsep)
@@ -30,6 +30,18 @@ def main():
 
         elif cmd == "pwd":
             print(os.getcwd())
+        
+        elif cmd == "cd":
+            if len(args) == 0:
+                target_dir = os.path.expanduser("~")
+            else:
+                target_dir = args[0]
+
+            if os.path.isdir(target_dir):
+                os.chdir(target_dir)
+            else:
+                print(f"cd: no such file or directory: {target_dir}")
+
 
         elif cmd == "echo":
             if line.startswith("echo "):
